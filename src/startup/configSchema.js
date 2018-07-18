@@ -65,11 +65,28 @@ let schema = {
       type: 'object',
       properties: {
         file: {
-          type: 'string',
-          format: 'file'
+          type: 'string'
         }
       }
     }
+  },
+  uia: {
+    type: 'object',
+    properties: {
+      publisher: {
+        type: 'string'
+      },
+      asset: {
+        type: 'string'
+      },
+      maximum: {
+        type: 'string'
+      },
+      precision: {
+        type: 'integer'
+      }
+    },
+    required: ['publisher', 'asset']
   },
   required: ['userDevDir', 'watch', 'dapp', 'node']
 }

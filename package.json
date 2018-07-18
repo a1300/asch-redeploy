@@ -1,6 +1,6 @@
 {
   "name": "asch-redeploy",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "A hassle-free local asch environment",
   "main": "index.js",
   "dependencies": {
@@ -10,9 +10,11 @@
     "bluebird": "3.5.1",
     "chalk": "2.4.1",
     "chokidar": "^2.0.3",
+    "commander": "^2.16.0",
     "config": "1.30.0",
     "inversify": "^4.13.0",
     "inversify-vanillajs-helpers": "^2.0.0",
+    "is-admin": "^2.1.1",
     "is-port-available": "^0.1.5",
     "moment": "2.22.1",
     "ncp": "2.0.0",
@@ -58,7 +60,8 @@
     "asch-redeploy": "./bin/asch-redeploy"
   },
   "os": [
-    "linux"
+    "linux",
+    "win32"
   ],
   "engines": {
     "node": ">=7.0"
