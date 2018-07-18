@@ -8,20 +8,25 @@ let PathResolution = function (config, logger, path) {
     let aschNodeDir = this.config.node.directory
     let userDevDir = this.config.userDevDir
 
-    // asch path is absolute
-    if (aschNodeDir.startsWith(this.path.sep)) {
-      return aschNodeDir
-    }
-    // asch path is parent
-    if (aschNodeDir.startsWith('..')) {
-      let result = path.join(userDevDir, aschNodeDir)
-      return result
+    if (process.platform === 'linux') {
+      // asch path is absolute
+      if (aschNodeDir.startsWith(this.path.sep)) {
+        return aschNodeDir
+      }
+      // asch path is parent
+      if (aschNodeDir.startsWith('..')) {
+        let result = path.join(userDevDir, aschNodeDir)
+        return result
+      }
+      // asch path is same directory
+      if (aschNodeDir.startsWith('./')) {
+        let result = path.join(userDevDir, aschNodeDir)
+        return result
+      }
     }
 
-    // asch path is same directory
-    if (aschNodeDir.startsWith('./')) {
-      let result = path.join(userDevDir, aschNodeDir)
-      return result
+    if (process.platform === 'win32') {
+      return aschNodeDir
     }
 
     throw new Error(`asch_node_not_found: directory "${aschNodeDir}" does not exists, specify with ASCH_NODE_DIR a absolute or relative path to an asch blockchain directory`)
